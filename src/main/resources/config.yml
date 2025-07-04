@@ -1,0 +1,598 @@
+# ==================================================
+# SUPREMECHAT PLUGIN
+# If you're in need of support or have encounted any errors please join the discord server:
+# https://discord.gg/AnPwty8asP
+#
+# - PlaceholderAPI Support
+# - Vault Support
+# ==================================================
+
+# ==================================================
+# ANTI-BOT
+#
+# what this does if true?
+# - prevents from chatting on join until player moves.
+# - prevents from using commands on join until player moves.
+# ==================================================
+anti-bot:
+  chat: true
+  commands: true
+  message: '&c&lPrevention &8&l➟ &7Please move before performing this.'
+
+# mute chat settings
+mute-chat: false
+bypass-mute-chat-permission: 'supremechat.bypass.mutechat'
+ops-bypass-mute-chat: true
+# chat color permission (Allow players to use &0-f & hex colors in chat)
+chat-color-permission: 'supremechat.chat.color'
+
+# ==================================================
+# CHAT FORMATTING:
+#
+# format - globally
+# groups - Uses VaultAPI Groups to check what rank the player is.
+#  * set `group-formatting` to `true` to enable groups.
+# ==================================================
+
+# should you want SupremeChat's chat function disabled?
+enable-chat-format: true
+
+# worlds that the chat format will not be used in.
+disabled-worlds:
+  - "exampleworld"
+  - "example2"
+
+# globally be used for everyone if `group-formatting` is set to `false`.
+# global-chat-color = Is used for emojis suffix, this prevents players from using the emojis color to bypass chat color permissions.
+# format = Global format style that chat will follow.
+global-chat-color: '&7'
+format: '&7%name% &8➟ &7%message%'
+
+group-formatting: false
+groups:
+  default: '%vault_prefix%&7%name% &8➟ &7%message%'
+  vip: '%vault_prefix%&7%name% &8➟ &a%message%'
+  helper: '%vault_prefix%&7%name% &8➟ &e%message%'
+  mod: '%vault_prefix%&7%name% &8➟ &b%message%'
+  admin: '%vault_prefix%&7%name% &8➟ &c%message%'
+  owner: '%vault_prefix%&7%name% &8➟ &c%message%'
+
+# per world chat
+# only players in the same world can chat to each other.
+per-world-chat: false
+
+hover: # used when you hover over the chat sent by player
+  enable: true
+  string:
+    - '&8&m---------------'
+    - '&7World: &b%world%'
+    - '&7Rank: %vault_prefix%'
+    - '&8&m---------------'
+click: # used when you click on the chat sent by player
+  enable: true
+  string: '/msg %player_name% '
+
+# enable = Weather or not you want this channel to register on server load or plugin reload.
+# permission = Giving the channel a permission will not allow players without it join, Use None for all access.
+# chat-color = Is used for emojis suffix, this prevents players from using the emojis color to bypass chat color permissions.
+# format = The main format that will be used when sending to channel members.
+channels:
+  english:
+    enable: true
+    permission: None
+    chat-color: '&7'
+    format: '&e[ENGLISH] &7%name% &8➟ &7%message%'
+  spanish:
+    enable: true
+    permission: None
+    format: '&e[SPANISH] &7%name% &8➟ &7%message%'
+  french:
+    enable: true
+    permission: None
+    chat-color: '&7'
+    format: '&e[FRENCH] &7%name% &8➟ &7%message%'
+  staff:
+    enable: true
+    permission: "supremechat.channel.staff"
+    chat-color: '&7'
+    format: '&d&l[Staff] &f%name% &8➟ &d%message%'
+  admin:
+    enable: true
+    permission: "supremechat.channel.admin"
+    chat-color: '&7'
+    format: '&c&l[Admin] &f%name% &8➟ &c%message%'
+
+# ==================================================
+# JOIN & LEAVE:
+#
+# To add a "silent" join type put the custom options to empty ''
+# Example: global-format: ''
+# ==================================================
+
+join:
+  enable: true
+  enable-groups: false
+  global-format: '&8[&a&l+&8] &7%name%' # will be used if 'enable-groups' is false.
+  groups:
+    default: '&8[&a&l+&8] &7%name%'
+    vip: '&8[&a&l+&8] &7%name%'
+    helper: '&8[&a&l+&8] &7%name%'
+    mod: '&8[&a&l+&8] &7%name%'
+    admin: '&8[&a&l+&8] &7%name%'
+    owner: '&8[&a&l+&8] &7%name%'
+
+leave:
+  enable: true
+  enable-groups: false
+  global-format: '&8[&c&l-&8] &7%name%' # will be used if 'enable-groups' is false.
+  groups:
+    default: '&8[&c&l-&8] &7%name%'
+    vip: '&8[&c&l-&8] &7%name%'
+    helper: '&8[&c&l-&8] &7%name%'
+    mod: '&8[&c&l-&8] &7%name%'
+    admin: '&8[&c&l-&8] &7%name%'
+    owner: '&8[&c&l-&8] &7%name%'
+
+vanish-support: true # allow to join/leave silent if vanished.
+
+enable-join-motd: true # should 'motd' be enabled.
+
+# executed when a player first joins
+first-join:
+  enable: true
+  announce-format: '&b⛏ &7Welcome &b{USERNAME}&7 to the server! &8[&b{UNIQUE}&8]'
+
+# custom title shows when the player joins the game.
+custom-title-join:
+  # should custom title join be disabled/enabled.
+  enable: true
+  top: "&e&lSERVER"
+  bottom: "&aWelcome &e%name%"
+  fade-in: 1
+  stay: 3
+  fade-out: 1
+
+motd:
+  - '&8&m----------------------------'
+  - '&#ca04fb&lY&#d006e2&lO&#d509c9&lU&#db0bb0&lR&#e10e97&lS&#e6107e&lE&#ec1365&lR&#f2154c&lV&#f71833&lE&#fd1a1a&lR'
+  - '&#C3C3C3Welcome to the server, %name%!'
+  - ''
+  - '&#FDB600This is the example MOTD'
+  - ''
+  - '&7&OSupremeChat by DevScape, thanks for using..'
+  - '&8&m----------------------------'
+
+# ==================================================
+# CUSTOM COMMANDS:
+#
+# <command_label>:
+#  string: '<your message here that will send to the player>'
+#
+# Custom commands will be extended soon...
+# ==================================================
+
+custom-commands:
+  discord: # discord name is your command label.
+    string: '&9&lDiscord: &7discord.gg/yourserver'
+  store: # store name is your command label.
+    string: '&b&lStore: &7store.yourserver.com'
+
+# ==================================================
+# MENTION
+# ==================================================
+
+mention:
+  player:
+    permission: 'supremechat.mention.player'
+    target: '@'
+    replacement: '&e%target%'
+    spaces: true
+    sound:
+      enable: true
+      sound: 'ENTITY_PLAYER_LEVELUP'
+
+# ==================================================
+# CHAT FILTER:
+#
+# set `chat-delay` to 0 if you want to disable chat delay.
+# ==================================================
+
+word-detect-enable: true
+word-detect: '&cThe word &7%word% &cis banned from the server!'
+word-detect-staff: '&c[Filter] &7%name%: &c[&7%message%&c]'
+word-detect-alert-staff: true
+detect-alert-staff-permission: 'sc.alert.staff'
+
+# to disable chat delays, set 'chat-delay' to 0
+chat-delay: 1 # how long should SupremeChat stop the player from chatting for? in seconds.
+chat-warn: '&cPlease slow down, you''re chatting too fast...'
+
+caps-lowercase: true # changes caps to lowercase
+caps-limit: 4 # how many caps should be limited until it detects.
+disable-caps-warn: false # set true if you want to disable 'caps-warn'
+caps-warn: '&cPlease do not use CAPS!'
+
+repeat-enable: true
+repeat-warn: '&cPlease do not repeat the same messages.'
+
+# to disable command delays, set 'command-delay' to 0
+command-delay: 1 # in seconds
+command-warn: '&cPlease slow down, you''re executing commands too fast...'
+
+# ==================================================
+# DEATH MESSAGES
+#
+# placeholders:
+# %name% = victims name that died.
+# %killer% = killers name (Player)
+# %mob% = mobs name that killed the victim.
+# ==================================================
+
+death:
+  # set false to disable custom death messages.
+  enable: true
+  # edit custom death messages.
+  messages:
+    contact: "&c&lDEATH! &7%name% was slain!"
+    entity_attack: "&c&lDEATH! &7%name% was killed by a %mob%"
+    entity_player: "&c&lDEATH! &f%name% &7was killed by &c%killer%"
+    fall: "&c&lDEATH! &7%name% fell from a high place."
+    drowning: "&c&lDEATH! &7%name% drowned."
+    fire: "&c&lDEATH! &7%name% burned to death."
+    projectile: "&c&lDEATH! &7%name% was shot."
+    unknown: "&c&lDEATH! &7%name% died mysteriously."
+
+# ==================================================
+# COMMAND-SPY
+# ==================================================
+
+enable-command-spy: true
+cs-spy: '&c[Command-Spy] &7%name%: &f/%command%'
+whitelist-spy-commands:
+  - 'spawn'
+
+# ==================================================
+# INTERACTIONS CHAT:
+# ==================================================
+
+# item in chat settings
+enable-chat-item: true
+chat-item-strings: # message string that will grab the item the player is holding.
+  - '[i]'
+  - '[item]'
+chat-item-replace: '&8[&b%item%&8]' # this will be the message that will replace the item string.
+
+# ==================================================
+# EMOJIS
+# ==================================================
+
+emojis:
+  smile:
+    emoticon: ":)"
+    emoji: "&e😊"
+    permission: 'supremechat.emoji.smile'
+  sad:
+    emoticon: ":("
+    emoji: "&9😢"
+    permission: 'supremechat.emoji.sad'
+  wink:
+    emoticon: ";)"
+    emoji: "&6😉"
+    permission: 'supremechat.emoji.wink'
+  thumbs_up:
+    emoticon: ":+1:"
+    emoji: "&a👍"
+    permission: 'supremechat.emoji.thumbs_up'
+  thumbs_down:
+    emoticon: ":-1:"
+    emoji: "&c👎"
+    permission: 'supremechat.emoji.thumbs_down'
+  heart:
+    emoticon: "<3"
+    emoji: "&c❤"
+    permission: 'supremechat.emoji.heart'
+  star:
+    emoticon: "*star*"
+    emoji: "&6⭐"
+    permission: 'supremechat.emoji.star'
+  fire:
+    emoticon: ":fire:"
+    emoji: "&c🔥"
+    permission: 'supremechat.emoji.fire'
+  cool:
+    emoticon: "B)"
+    emoji: "&b😎"
+    permission: 'supremechat.emoji.cool'
+  cry:
+    emoticon: ":cry:"
+    emoji: "&3😭"
+    permission: 'supremechat.emoji.cry'
+  surprised:
+    emoticon: ":o"
+    emoji: "&e😲"
+    permission: 'supremechat.emoji.surprised'
+  angry:
+    emoticon: ">:("
+    emoji: "&4😠"
+    permission: 'supremechat.emoji.angry'
+  laugh:
+    emoticon: ":D"
+    emoji: "&a😄"
+    permission: 'supremechat.emoji.laugh'
+  thinking:
+    emoticon: ":think:"
+    emoji: "&e🤔"
+    permission: 'supremechat.emoji.thinking'
+  party:
+    emoticon: ":party:"
+    emoji: "&d🎉"
+    permission: 'supremechat.emoji.party'
+  check_mark:
+    emoticon: ":check:"
+    emoji: "&a✅"
+    permission: 'supremechat.emoji.check_mark'
+  cross_mark:
+    emoticon: ":cross:"
+    emoji: "&c❌"
+    permission: 'supremechat.emoji.cross_mark'
+  sleepy:
+    emoticon: ":zzz:"
+    emoji: "&b😴"
+    permission: 'supremechat.emoji.sleepy'
+  shocked:
+    emoticon: ":shock:"
+    emoji: "&e😱"
+    permission: 'supremechat.emoji.shocked'
+  robot:
+    emoticon: ":robot:"
+    emoji: "&7🤖"
+    permission: 'supremechat.emoji.robot'
+  sun:
+    emoticon: ":sun:"
+    emoji: "&e☀"
+    permission: 'supremechat.emoji.sun'
+  moon:
+    emoticon: ":moon:"
+    emoji: "&b🌙"
+    permission: 'supremechat.emoji.moon'
+  star_eyes:
+    emoticon: ":starstruck:"
+    emoji: "&6🤩"
+    permission: 'supremechat.emoji.star_eyes'
+  clap:
+    emoticon: ":clap:"
+    emoji: "&a👏"
+    permission: 'supremechat.emoji.clap'
+  facepalm:
+    emoticon: ":facepalm:"
+    emoji: "&6🤦"
+    permission: 'supremechat.emoji.facepalm'
+  ok_hand:
+    emoticon: ":ok:"
+    emoji: "&a👌"
+    permission: 'supremechat.emoji.ok_hand'
+  pray:
+    emoticon: ":pray:"
+    emoji: "&e🙏"
+    permission: 'supremechat.emoji.pray'
+  coffee:
+    emoticon: ":coffee:"
+    emoji: "&6☕"
+    permission: 'supremechat.emoji.coffee'
+  alien:
+    emoticon: ":alien:"
+    emoji: "&2👽"
+    permission: 'supremechat.emoji.alien'
+  ghost:
+    emoticon: ":ghost:"
+    emoji: "&7👻"
+    permission: 'supremechat.emoji.ghost'
+  music:
+    emoticon: ":music:"
+    emoji: "&c♫&9♬&3♪&5♩&a♭&e♪"
+    permission: 'supremechat.emoji.music'
+
+# ==================================================
+# BLOCKED WORDS
+# Note: Some words may be missing as i've copied these from some lists online.
+# ==================================================
+banned-words:
+  - 'anal'
+  - 'anus'
+  - 'arse'
+  - 'ass'
+  - 'ballsack'
+  - 'balls'
+  - 'bastard'
+  - 'bitch'
+  - 'biatch'
+  - 'bloody'
+  - 'blowjob'
+  - 'blow job'
+  - 'bollock'
+  - 'bollok'
+  - 'boner'
+  - 'boob'
+  - 'bugger'
+  - 'bum'
+  - 'butt'
+  - 'buttplug'
+  - 'clitoris'
+  - 'cock'
+  - 'coon'
+  - 'crap'
+  - 'cunt'
+  - 'damn'
+  - 'dick'
+  - 'dildo'
+  - 'dyke'
+  - 'fag'
+  - 'feck'
+  - 'fellate'
+  - 'fellatio'
+  - 'felching'
+  - 'fuck'
+  - 'f u c k'
+  - 'fudgepacker'
+  - 'flange'
+  - 'Goddamn'
+  - 'God damn'
+  - 'hell'
+  - 'homo'
+  - 'jerk'
+  - 'jizz'
+  - 'knobend'
+  - 'knob end'
+  - 'labia'
+  - 'lmao'
+  - 'lmfao'
+  - 'muff'
+  - 'nigger'
+  - 'nigga'
+  - 'omg'
+  - 'penis'
+  - 'piss'
+  - 'poop'
+  - 'prick'
+  - 'pube'
+  - 'pussy'
+  - 'queer'
+  - 'scrotum'
+  - 'sex'
+  - 'shit'
+  - 'slut'
+  - 'smegma'
+  - 'spunk'
+  - 'tit'
+  - 'tosser'
+  - 'turd'
+  - 'twat'
+  - 'vagina'
+  - 'wank'
+  - 'whore'
+  - 'wtf'
+  - 'arse'
+  - 'arsehole'
+  - 'balls'
+  - 'bastard'
+  - 'beaver'
+  - 'bell'
+  - 'bellend'
+  - 'bent'
+  - 'berk'
+  - 'bint'
+  - 'bitch'
+  - 'blighter'
+  - 'blimey'
+  - 'bloodclaat'
+  - 'bloody'
+  - 'blooming'
+  - 'bollocks'
+  - 'bonk'
+  - 'bukkake'
+  - 'bullshit'
+  - 'cack'
+  - 'cad'
+  - 'chav'
+  - 'choad'
+  - 'chuffer'
+  - 'clunge'
+  - 'cobblers'
+  - 'cock'
+  - 'cock-up'
+  - 'cocksucker'
+  - 'cockwomble'
+  - 'codger'
+  - 'corey'
+  - 'cow'
+  - 'crap'
+  - 'crikey'
+  - 'cunt'
+  - 'daft'
+  - 'damn'
+  - 'dick'
+  - 'dickhead'
+  - 'dildo'
+  - 'dodgy'
+  - 'duffer'
+  - 'fanny'
+  - 'feck'
+  - 'flaps'
+  - 'fuck'
+  - 'fucktard'
+  - 'gash'
+  - 'ginger'
+  - 'goddam'
+  - 'gorblimey'
+  - 'gormless'
+  - 'hell'
+  - 'hobknocker'
+  - 'jizz'
+  - 'knob'
+  - 'knobber'
+  - 'knobend'
+  - 'knobhead'
+  - 'ligger'
+  - 'manky'
+  - 'minge'
+  - 'minger'
+  - 'minging'
+  - 'motherfucker'
+  - 'munter'
+  - 'muppet'
+  - 'naff'
+  - 'nitwit'
+  - 'nonce'
+  - 'numpty'
+  - 'nutter'
+  - 'penguin'
+  - 'pillock'
+  - 'pish'
+  - 'piss off'
+  - 'piss-flaps'
+  - 'pissed'
+  - 'pissed off'
+  - 'plonker'
+  - 'ponce'
+  - 'poof'
+  - 'pouf'
+  - 'poxy'
+  - 'prat'
+  - 'prick'
+  - 'prick'
+  - 'prickteaser'
+  - 'punani'
+  - 'punny'
+  - 'pussy'
+  - 'randy'
+  - 'rapey'
+  - 'rat arsed'
+  - 'rotter'
+  - 'rubbish'
+  - 'scrubber'
+  - 'shag'
+  - 'shit'
+  - 'shite'
+  - 'shitfaced'
+  - 'skank'
+  - 'slag'
+  - 'slapper'
+  - 'slut'
+  - 'snatch'
+  - 'sod'
+  - 'sod-off'
+  - 'spunk'
+  - 'swine'
+  - 'tart'
+  - 'tits'
+  - 'toff'
+  - 'tosser'
+  - 'trollop'
+  - 'tuss'
+  - 'twat'
+  - 'twonk'
+  - 'wally'
+  - 'wanker'
+  - 'wankstain'
+  - 'wazzack'
+  - 'whore'

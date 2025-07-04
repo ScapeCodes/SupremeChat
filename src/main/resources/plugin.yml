@@ -1,0 +1,15 @@
+name: SupremeChat
+version: '${project.version}'
+main: net.devscape.project.supremechat.SupremeChat
+api-version: 1.13
+authors: [DevScape]
+
+commands:
+  supremechat:
+    aliases: [schat, sc]
+  channel:
+    aliases: [c, channels]
+  emojis:
+    description: 'List all available emojis.'
+    aliases: [emoji]
+    permission: 'supremechat.emojis'
