@@ -1,5 +1,6 @@
 package net.devscape.project.supremechat;
 
+import net.devscape.project.supremechat.chatgames.GameManager;
 import net.devscape.project.supremechat.commands.ChannelCommand;
 import net.devscape.project.supremechat.commands.EmojisCommands;
 import net.devscape.project.supremechat.commands.SCCommand;
@@ -24,6 +25,7 @@ public final class SupremeChat extends JavaPlugin {
 
     private static SupremeChat instance;
     private ChannelManager channelManager;
+    private GameManager gameManager;
 
     private static Permission perms = null;
     private static Chat chat;
@@ -66,6 +68,8 @@ public final class SupremeChat extends JavaPlugin {
         setupVault();
 
         channelManager = new ChannelManager();
+        gameManager = new GameManager(this);
+        gameManager.startScheduler();
 
         getCommand("supremechat").setExecutor(new SCCommand());
         getCommand("channel").setExecutor(new ChannelCommand());
@@ -131,6 +135,10 @@ public final class SupremeChat extends JavaPlugin {
     }
 
     public ChannelManager getChannelManager() { return channelManager; }
+
+    public GameManager getGameManager() {
+        return gameManager;
+    }
 
     private void callMetrics() {
         int pluginId = 18329;

@@ -263,6 +263,52 @@ chat-item-strings: # message string that will grab the item the player is holdin
 chat-item-replace: '&8[&b%item%&8]' # this will be the message that will replace the item string.
 
 # ==================================================
+# CHAT GAMES:
+# ==================================================
+# trivia & maths game values are divided into "<question/equation>:<answer>"
+
+chatgames:
+  enable: true # weather or not you want chat games to be enabled.
+  interval-seconds: 180 # how many seconds a new game to start, won't start a new one if one is running.
+  min-players: 2 # minimum players needed for a game to start.
+  expiry-time: 30 # how many seconds a game lasts before expiring
+  strings:
+    game-announce:
+      - '&8&m------------------------------------------'
+      - '                     &c&lC&6&lH&e&lA&a&lT&b&l &9&lG&d&lA&5&lM&c&lE&6&lS'
+      - ''
+      - '&7Game: &b%game_name%'
+      - '&7Prompt: &f%game_question%'
+      - ''
+      - '&8&m------------------------------------------'
+  # word unscrambler
+  word-unscrambler:
+    enabled: true
+    reward-commands:
+      - 'eco give %player% 25'
+    words:
+      - apple
+      - banana
+      - minecraft
+  # trivia game
+  trivia:
+    enabled: true
+    reward-commands:
+      - 'eco give %player% 25'
+    questions:
+      - "What is the capital of France?:Paris"
+      - "Who created Minecraft?:Notch"
+  # maths game
+  math:
+    enabled: true
+    reward-commands:
+      - 'eco give %player% 25'
+    equations:
+      - "5 + 3:8"
+      - "12 - 4:8"
+      - "6 * 6:36"
+
+# ==================================================
 # EMOJIS
 # ==================================================
 
