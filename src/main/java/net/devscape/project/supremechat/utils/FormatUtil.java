@@ -49,7 +49,7 @@ public class FormatUtil {
                     String emoji = config.getString("emojis." + key + ".emoji");
 
                     if (isNormalChat) {
-                        emoji = emoji + SupremeChat.getInstance().getConfig().getString("chat-color");
+                        emoji = emoji + SupremeChat.getInstance().getConfig().getString("global-chat-color");
                     }
 
                     if (isInChannel) {
