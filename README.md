@@ -11,10 +11,6 @@ Dependencies:
 - Vault
 - PlaceholderAPI
 
-Dependencies:
-- Vault
-- PlaceholderAPI
-
 <img width="870" height="80" alt="supremechatbannerfeatures" src="https://github.com/user-attachments/assets/26ab5041-b8d3-4dbb-b2c0-7aadb28c727b" />
 
 - Anti Bot Preventions.
@@ -34,5 +30,5 @@ Dependencies:
 
 <img width="870" height="80" alt="supremechatbannercommands" src="https://github.com/user-attachments/assets/cc58a75b-6e2c-4c23-bca1-ff97f1aab4d4" />
 - /schat <help/reload/mutechat>
-- /channels <help/join/leave> | [channel]
+- /channels <help/join/leave> [channel]
 - /emojis
